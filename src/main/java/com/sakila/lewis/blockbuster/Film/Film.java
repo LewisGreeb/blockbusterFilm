@@ -1,6 +1,11 @@
-package com.sakila.lewis.blockbuster;
+package com.sakila.lewis.blockbuster.Film;
+
+import com.sakila.lewis.blockbuster.Actor.Actor;
+import com.sakila.lewis.blockbuster.Category.Category;
+import com.sakila.lewis.blockbuster.Language.Language;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="film")
@@ -16,7 +21,8 @@ public class Film {
     private String title;
     private String description;
     private int release_year;
-    private int language_id;
+    @Column(name="language_id")
+    private int languageID;
     private int rental_duration;
     private double rental_rate;
     private int length;
@@ -24,17 +30,39 @@ public class Film {
     // private Rating rating;
     private String rating;
     private String special_features;
-    private String last_update;
+
+    // Linking attribute - actor.
+    @ManyToMany
+            @JoinTable(
+                    name = "film_actor",
+                    joinColumns = @JoinColumn(name = "film_id"),
+                    inverseJoinColumns = @JoinColumn(name = "actor_id")
+            )
+    Set<Actor> actors;
+
+    // Linking attribute - language.
+    @ManyToOne
+    @JoinColumn(name = "language_id", insertable = false, updatable = false)
+    private Language language;
+
+    // Linking attribute - category.
+    @ManyToMany
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    Set<Category> categories;
 
     // Default empty constructor.
     public Film(){}
     // Constructor with attributes.
-    public Film(String title, String description, int release_year, int language_id, int rental_duration, double rental_rate,
-                int length, double replacement_cost, String rating, String special_features, String last_update){
+    public Film(String title, String description, int release_year, int languageID, int rental_duration, double rental_rate,
+                int length, double replacement_cost, String rating, String special_features){
         this.title = title;
         this.description = description;
         this.release_year = release_year;
-        this.language_id = language_id;
+        this.languageID = languageID;
         this.rental_duration = rental_duration;
         this.rental_rate = rental_rate;
         this.length = length;
@@ -48,7 +76,6 @@ public class Film {
             default -> Rating.G;
         };*/
         this.special_features = special_features;
-        this.last_update = last_update;
     }
 
     // Getters and setters.
@@ -84,12 +111,12 @@ public class Film {
         this.release_year = release_year;
     }
 
-    public int getLanguage_id() {
-        return language_id;
+    public int getLanguageID() {
+        return languageID;
     }
 
-    public void setLanguage_id(int language_id) {
-        this.language_id = language_id;
+    public void setLanguageID(int languageID) {
+        this.languageID = languageID;
     }
 
     public int getRental_duration() {
@@ -160,11 +187,4 @@ public class Film {
         this.special_features = special_features;
     }
 
-    public String getLast_update() {
-        return last_update;
-    }
-
-    public void setLast_update(String last_update) {
-        this.last_update = last_update;
-    }
 }

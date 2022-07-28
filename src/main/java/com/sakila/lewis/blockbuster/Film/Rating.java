@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster;
+package com.sakila.lewis.blockbuster.Film;
 
 public enum Rating {
     G,

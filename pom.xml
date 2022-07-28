@@ -12,7 +12,7 @@
 	<artifactId>blockbuster</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>blockbuster</name>
-	<description>Blockbuster-type system based on Sakila db.</description>
+	<description>Film microservice for blockbuster scenario.</description>
 	<properties>
 		<java.version>18</java.version>
 	</properties>

@@ -1,53 +1,43 @@
 package com.sakila.lewis.blockbuster;
 
+import com.sakila.lewis.blockbuster.Category.Category;
 import com.sakila.lewis.blockbuster.Film.FilmRepository;
+import com.sakila.lewis.blockbuster.Language.Language;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class IsItFriday {
-    static String isItFriday(String today){
-        return "Friday".equals(today) ? "Yes" : "No";
-    }
-    static String isItNotFriday(String today){
-        return "Friday".equals(today) ? "No" : "Yes";
-    }
-}
-
 public class StepDefinitions {
-    private String today;
+
     private String actualAnswer;
 
-    @Given("today is Monday")
-    public void today_is_Monday(){
-        today = "Monday";
-    }
+    Category category = new Category();
 
-    @Given("today is Friday")
-    public void today_is_Friday(){
-        today = "Friday";
+    @Given("the category is fantasy.")
+    public void category_is_fantasy(){
+        category.setName("fantasy");
     }
-
-    @Given("today is Tuesday")
-    public void today_is_Tuesday(){
-        today = "Tuesday";
+    @When("I ask what the category is.")
+    public void i_ask_what_category(){
+        actualAnswer = category.getName();
     }
-
-    @When("I ask whether it's Friday")
-    public void i_ask_whether_it_s_Friday(){
-        actualAnswer = IsItFriday.isItFriday(today);
-    }
-
     @Then("I should be told {string}")
     public void i_should_be_told(String expectedAnswer){
         assertEquals(expectedAnswer, actualAnswer);
     }
 
-    @When("I ask whether today is not Friday")
-    public void i_ask_whether_today_is_not_Friday(){
-        actualAnswer = IsItFriday.isItNotFriday(today);
+    Language lang = new Language();
+
+    @Given("the language is English.")
+    public void language_is_English(){
+        lang.setName("English");
     }
+    @When("I ask what the language is.")
+    public void i_ask_what_language(){
+        actualAnswer = lang.getName();
+    }
+
 
 }

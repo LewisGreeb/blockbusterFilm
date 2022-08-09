@@ -15,7 +15,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    // Attributes to define a category.
+    // Category name attribute.
     @Column(name="name")
     private String name;
 

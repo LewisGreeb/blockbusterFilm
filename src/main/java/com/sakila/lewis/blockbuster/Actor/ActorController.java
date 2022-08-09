@@ -26,13 +26,13 @@ public class ActorController {
         return "success";
     }
 
-    // Get actors.
+    // Get all actors.
     @GetMapping("/AllActors")
     public @ResponseBody Iterable<Actor>getAllActors(){
         return actorRepository.findAll();
     }
 
-    // Get films and find by name.
+    // Get actors by name.
     @GetMapping("/GetActorByFirstNameLastName")
     public @ResponseBody List<Actor> getActorByFirstNameLastName(@RequestParam String first_name, @RequestParam String last_name) {
         return actorRepository.findByFirstNameAndLastName(first_name, last_name);

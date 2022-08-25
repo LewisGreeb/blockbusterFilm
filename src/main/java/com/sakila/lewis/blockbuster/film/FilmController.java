@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequestMapping("/film")
 public class FilmController {
 
-    final String success = "success";
+    final static String success = "success";
 
     @Autowired
     private FilmRepository filmRepository;
@@ -65,7 +65,7 @@ public class FilmController {
     @DeleteMapping("/DeleteFilmByTitle")
     public @ResponseBody String deleteFilmByTitle(@RequestParam String title){
         List<Film> films = filmRepository.findByTitle(title);
-        if(films.size() > 0){
+        if(!films.isEmpty()){
             filmRepository.deleteById(films.get(0).getId());
         }
         return success;

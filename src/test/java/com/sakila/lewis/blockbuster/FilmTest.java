@@ -7,31 +7,31 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FilmTest {
+class FilmTest {
 
     @Test
-    public void test_Title(){
+    void test_Title(){
         Film film = new Film();
         film.setTitle("Oblivion");
         assertEquals("Oblivion", film.getTitle());
     }
 
     @Test
-    public void test_Description(){
+    void test_Description(){
         Film film = new Film();
         film.setDescription("A post-apocalyptic movie starring Tom Cruise, everyone's favourite cultist.");
         assertEquals("A post-apocalyptic movie starring Tom Cruise, everyone's favourite cultist.", film.getDescription());
     }
 
     @Test
-    public void test_ReleaseYear(){
+    void test_ReleaseYear(){
         Film film = new Film();
         film.setReleaseYear(2003);
         assertEquals(2003, film.getReleaseYear());
     }
 
     @Test
-    public void test_RentalRate(){
+    void test_RentalRate(){
         Film film = new Film();
         film.setRentalRate(BigDecimal.valueOf(2.59));
         assertEquals(BigDecimal.valueOf(2.59), film.getRentalRate());

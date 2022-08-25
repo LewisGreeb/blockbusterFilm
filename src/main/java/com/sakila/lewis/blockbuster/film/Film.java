@@ -109,8 +109,8 @@ public class Film {
         return releaseYear;
     }
 
-    public void setReleaseYear(int release_year) {
-        this.releaseYear = release_year;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public int getLanguageID() {
@@ -165,7 +165,7 @@ public class Film {
         return specialFeatures;
     }
 
-    public void setSpecialFeatures(String special_features) {
-        this.specialFeatures = special_features;
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
     }
 }

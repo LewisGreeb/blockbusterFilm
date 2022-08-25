@@ -19,8 +19,8 @@ public class ActorController {
 
     // Add new actor.
     @PostMapping("/AddActor")
-    public @ResponseBody String addActor(@RequestParam String first_name, @RequestParam String last_name){
-        Actor a = new Actor(first_name, last_name);
+    public @ResponseBody String addActor(@RequestParam String firstName, @RequestParam String lastName){
+        Actor a = new Actor(firstName, lastName);
         actorRepository.save(a);
         return "success";
     }
@@ -33,18 +33,18 @@ public class ActorController {
 
     // Get actors by name.
     @GetMapping("/GetActorByFirstNameLastName")
-    public @ResponseBody Actor getActorByFirstNameLastName(@RequestParam String first_name, @RequestParam String last_name) {
-        return actorRepository.findByFirstNameAndLastName(first_name, last_name);
+    public @ResponseBody Actor getActorByFirstNameLastName(@RequestParam String firstName, @RequestParam String lastName) {
+        return actorRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
     // Update actor.
     @PatchMapping("/UpdateActorNameByID")
-    public @ResponseBody Actor updateActorNameById(@RequestParam int id, @RequestParam String first_name, @RequestParam String last_name) {
+    public @ResponseBody Actor updateActorNameById(@RequestParam int id, @RequestParam String firstName, @RequestParam String lastName) {
         Actor actor = actorRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No actor exists with that id."));
-        actor.setFirstName(first_name);
-        actor.setLastName(last_name);
+        actor.setFirstName(firstName);
+        actor.setLastName(lastName);
         return actorRepository.save(actor);
     }
 

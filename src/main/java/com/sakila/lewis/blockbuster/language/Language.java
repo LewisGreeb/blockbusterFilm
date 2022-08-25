@@ -1,6 +1,6 @@
-package com.sakila.lewis.blockbuster.Language;
+package com.sakila.lewis.blockbuster.language;
 
-import com.sakila.lewis.blockbuster.Film.Film;
+import com.sakila.lewis.blockbuster.film.Film;
 
 import javax.persistence.*;
 import java.util.Set;

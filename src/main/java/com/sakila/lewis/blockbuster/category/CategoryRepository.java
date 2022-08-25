@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Category;
+package com.sakila.lewis.blockbuster.category;
 
 import org.springframework.data.repository.CrudRepository;
 

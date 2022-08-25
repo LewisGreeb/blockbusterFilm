@@ -1,6 +1,6 @@
 package com.sakila.lewis.blockbuster;
 
-import com.sakila.lewis.blockbuster.Actor.Actor;
+import com.sakila.lewis.blockbuster.actor.Actor;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

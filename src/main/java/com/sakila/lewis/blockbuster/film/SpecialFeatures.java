@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Film;
+package com.sakila.lewis.blockbuster.film;
 
 public enum SpecialFeatures {
     TRAILERS {

@@ -1,8 +1,8 @@
-package com.sakila.lewis.blockbuster.Film;
+package com.sakila.lewis.blockbuster.film;
 
-import com.sakila.lewis.blockbuster.Actor.Actor;
-import com.sakila.lewis.blockbuster.Category.Category;
-import com.sakila.lewis.blockbuster.Language.Language;
+import com.sakila.lewis.blockbuster.actor.Actor;
+import com.sakila.lewis.blockbuster.category.Category;
+import com.sakila.lewis.blockbuster.language.Language;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

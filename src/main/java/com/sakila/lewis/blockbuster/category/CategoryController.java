@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Category;
+package com.sakila.lewis.blockbuster.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

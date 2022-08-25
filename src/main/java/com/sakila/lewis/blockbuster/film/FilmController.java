@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Film;
+package com.sakila.lewis.blockbuster.film;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Language;
+package com.sakila.lewis.blockbuster.language;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

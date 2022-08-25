@@ -1,6 +1,6 @@
 package com.sakila.lewis.blockbuster;
 
-import com.sakila.lewis.blockbuster.Film.Film;
+import com.sakila.lewis.blockbuster.film.Film;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Film;
+package com.sakila.lewis.blockbuster.film;
 
 import org.springframework.data.repository.CrudRepository;
 

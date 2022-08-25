@@ -1,7 +1,7 @@
 package com.sakila.lewis.blockbuster;
 
-import com.sakila.lewis.blockbuster.Category.Category;
-import com.sakila.lewis.blockbuster.Language.Language;
+import com.sakila.lewis.blockbuster.category.Category;
+import com.sakila.lewis.blockbuster.language.Language;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

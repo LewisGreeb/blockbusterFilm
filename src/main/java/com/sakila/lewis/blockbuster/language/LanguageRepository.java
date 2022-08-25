@@ -1,4 +1,4 @@
-package com.sakila.lewis.blockbuster.Language;
+package com.sakila.lewis.blockbuster.language;
 
 import org.springframework.data.repository.CrudRepository;
 

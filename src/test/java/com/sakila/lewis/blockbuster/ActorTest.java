@@ -7,6 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ActorTest {
 
     @Test
+    void test_ID(){
+        Actor actor = new Actor();
+        actor.setId(1);
+        assertEquals(1, actor.getId());
+    }
+
+    @Test
     void test_FirstName(){
         Actor actor = new Actor("Bernard", "Cribbins");
         assertEquals("Bernard", actor.getFirstName());

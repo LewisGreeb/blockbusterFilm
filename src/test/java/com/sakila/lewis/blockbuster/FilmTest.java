@@ -10,6 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class FilmTest {
 
     @Test
+    void test_ID(){
+        Film film = new Film();
+        film.setId(1);
+        assertEquals(1, film.getId());
+    }
+
+    @Test
     void test_Title(){
         Film film = new Film();
         film.setTitle("Oblivion");

@@ -8,6 +8,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class CategoryTest {
 
     @Test
+    void test_ID(){
+        Category category = new Category();
+        category.setId(1);
+        assertEquals(1, category.getId());
+    }
+
+    @Test
     void test_Name(){
         Category category = new Category();
         category.setName("Spanish");

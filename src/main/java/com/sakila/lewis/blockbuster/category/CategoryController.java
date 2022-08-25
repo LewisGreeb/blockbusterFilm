@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"http://localhost:4200/"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
 @RequestMapping("/category")
 public class CategoryController {

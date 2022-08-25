@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"http://localhost:4200/"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
 @RequestMapping("/actor")
 public class ActorController {

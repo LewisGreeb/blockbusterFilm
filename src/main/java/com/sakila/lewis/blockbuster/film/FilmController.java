@@ -8,12 +8,12 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
+@CrossOrigin(origins= {"http://localhost:4200/"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
 @RequestMapping("/film")
 public class FilmController {
 
-    final static String success = "success";
+    static final String SUCCESS = "success";
 
     @Autowired
     private FilmRepository filmRepository;
@@ -27,7 +27,7 @@ public class FilmController {
     public @ResponseBody String addNewFilm(@RequestBody FilmDTO filmDTO){
         Film a = new Film(filmDTO);
         filmRepository.save(a);
-        return success;
+        return SUCCESS;
     }
 
     // Get films.
@@ -58,7 +58,7 @@ public class FilmController {
     @DeleteMapping("/DeleteFilmByID")
     public @ResponseBody String deleteFilmById(@RequestParam int id){
         filmRepository.deleteById(id);
-        return success;
+        return SUCCESS;
     }
 
     // Delete film by title.
@@ -68,7 +68,7 @@ public class FilmController {
         if(!films.isEmpty()){
             filmRepository.deleteById(films.get(0).getId());
         }
-        return success;
+        return SUCCESS;
     }
 
     // Update film with filmDTO content.

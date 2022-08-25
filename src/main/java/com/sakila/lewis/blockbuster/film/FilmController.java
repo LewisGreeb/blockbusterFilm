@@ -13,6 +13,8 @@ import java.util.Optional;
 @RequestMapping("/film")
 public class FilmController {
 
+    final String success = "success";
+
     @Autowired
     private FilmRepository filmRepository;
 
@@ -24,9 +26,8 @@ public class FilmController {
     @PostMapping("/AddNewFilm")
     public @ResponseBody String addNewFilm(@RequestBody FilmDTO filmDTO){
         Film a = new Film(filmDTO);
-        System.out.println(filmDTO.getTitle() + ": " + filmDTO.getDescription());
         filmRepository.save(a);
-        return "success";
+        return success;
     }
 
     // Get films.
@@ -57,7 +58,7 @@ public class FilmController {
     @DeleteMapping("/DeleteFilmByID")
     public @ResponseBody String deleteFilmById(@RequestParam int id){
         filmRepository.deleteById(id);
-        return "success";
+        return success;
     }
 
     // Delete film by title.
@@ -67,7 +68,7 @@ public class FilmController {
         if(films.size() > 0){
             filmRepository.deleteById(films.get(0).getId());
         }
-        return "success";
+        return success;
     }
 
     // Update film with filmDTO content.

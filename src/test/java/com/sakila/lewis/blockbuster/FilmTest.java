@@ -13,28 +13,28 @@ public class FilmTest {
     public void test_Title(){
         Film film = new Film();
         film.setTitle("Oblivion");
-        assertEquals(film.getTitle(), "Oblivion");
+        assertEquals("Oblivion", film.getTitle());
     }
 
     @Test
     public void test_Description(){
         Film film = new Film();
         film.setDescription("A post-apocalyptic movie starring Tom Cruise, everyone's favourite cultist.");
-        assertEquals(film.getDescription(), "A post-apocalyptic movie starring Tom Cruise, everyone's favourite cultist.");
+        assertEquals("A post-apocalyptic movie starring Tom Cruise, everyone's favourite cultist.", film.getDescription());
     }
 
     @Test
     public void test_ReleaseYear(){
         Film film = new Film();
         film.setReleaseYear(2003);
-        assertEquals(film.getReleaseYear(), 2003);
+        assertEquals(2003, film.getReleaseYear());
     }
 
     @Test
     public void test_RentalRate(){
         Film film = new Film();
         film.setRentalRate(BigDecimal.valueOf(2.59));
-        assertEquals(film.getRentalRate(), BigDecimal.valueOf(2.59));
+        assertEquals(BigDecimal.valueOf(2.59), film.getRentalRate());
     }
 
 }

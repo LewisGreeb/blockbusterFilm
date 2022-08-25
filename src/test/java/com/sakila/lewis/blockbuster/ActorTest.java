@@ -9,13 +9,13 @@ public class ActorTest {
     @Test
     public void test_FirstName(){
         Actor actor = new Actor("Bernard", "Cribbins");
-        assertEquals(actor.getFirstName(), "Bernard");
+        assertEquals("Bernard", actor.getFirstName());
     }
 
     @Test
     public void test_LastName(){
         Actor actor = new Actor("Bernard", "Cribbins");
-        assertEquals(actor.getLastName(), "Cribbins");
+        assertEquals("Cribbins", actor.getLastName());
     }
 
 }

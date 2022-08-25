@@ -32,7 +32,6 @@ public class Film {
     private Integer length;
     @Column(name="replacement_cost")
     private BigDecimal replacementCost;
-    // private Rating rating;
     private String rating;
     @Column(name="special_features")
     private String specialFeatures;

@@ -23,7 +23,6 @@ public class LanguageController {
     @PostMapping
     public @ResponseBody String addNewLanguage(@RequestParam String name){
         Language lang = new Language(name);
-        System.out.println(name);
         languageRepository.save(lang);
         return "success";
     }

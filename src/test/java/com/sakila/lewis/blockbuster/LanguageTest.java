@@ -1,6 +1,7 @@
 package com.sakila.lewis.blockbuster;
 
 import com.sakila.lewis.blockbuster.actor.Actor;
+import com.sakila.lewis.blockbuster.category.Category;
 import com.sakila.lewis.blockbuster.film.Film;
 import com.sakila.lewis.blockbuster.language.Language;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,12 @@ class LanguageTest {
     void test_Name(){
         Language language = new Language();
         language.setName("Spanish");
+        assertEquals("Spanish", language.getName());
+    }
+
+    @Test
+    void test_Constructor(){
+        Language language = new Language("Spanish");
         assertEquals("Spanish", language.getName());
     }
 

@@ -27,6 +27,12 @@ class CategoryTest {
     }
 
     @Test
+    void test_Constructor(){
+        Category category = new Category("Action");
+        assertEquals("Action", category.getName());
+    }
+
+    @Test
     void test_Films(){
         Category category = new Category();
         Film film1 = new Film();

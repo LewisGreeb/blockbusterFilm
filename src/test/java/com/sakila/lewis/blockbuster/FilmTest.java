@@ -1,6 +1,7 @@
 package com.sakila.lewis.blockbuster;
 
 import com.sakila.lewis.blockbuster.film.Film;
+import com.sakila.lewis.blockbuster.film.FilmDTO;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -84,6 +85,14 @@ class FilmTest {
         Film film = new Film();
         film.setSpecialFeatures("Behind the Scenes");
         assertEquals("Behind the Scenes", film.getSpecialFeatures());
+    }
+
+    @Test
+    void test_Constructor(){
+        FilmDTO filmDTO = new FilmDTO();
+        filmDTO.setTitle("Title");
+        Film film = new Film(filmDTO);
+        assertEquals("Title", film.getTitle());
     }
 
 }

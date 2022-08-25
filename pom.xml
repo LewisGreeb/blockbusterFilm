@@ -14,7 +14,7 @@
 	<name>blockbuster</name>
 	<description>Film microservice for blockbuster scenario.</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>17</java.version>
 		<sonar.organization>lewisgreeb</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>

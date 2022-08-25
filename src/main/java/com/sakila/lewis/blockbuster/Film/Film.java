@@ -5,6 +5,7 @@ import com.sakila.lewis.blockbuster.Category.Category;
 import com.sakila.lewis.blockbuster.Language.Language;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
@@ -20,16 +21,21 @@ public class Film {
     // Attributes of film table.
     private String title;
     private String description;
-    private int release_year;
+    @Column(name="release_year")
+    private Integer releaseYear;
     @Column(name="language_id")
-    private int languageID;
-    private int rental_duration;
-    private double rental_rate;
-    private int length;
-    private double replacement_cost;
+    private Integer languageID;
+    @Column(name="rental_duration")
+    private Integer rentalDuration;
+    @Column(name="rental_rate")
+    private BigDecimal rentalRate;
+    private Integer length;
+    @Column(name="replacement_cost")
+    private BigDecimal replacementCost;
     // private Rating rating;
     private String rating;
-    private String special_features;
+    @Column(name="special_features")
+    private String specialFeatures;
 
     // Linking attribute - actor.
     @ManyToMany
@@ -57,25 +63,22 @@ public class Film {
     // Default empty constructor.
     public Film(){}
     // Constructor with attributes.
-    public Film(String title, String description, int release_year, int languageID, int rental_duration, double rental_rate,
-                int length, double replacement_cost, String rating, String special_features){
-        this.title = title;
-        this.description = description;
-        this.release_year = release_year;
-        this.languageID = languageID;
-        this.rental_duration = rental_duration;
-        this.rental_rate = rental_rate;
-        this.length = length;
-        this.replacement_cost = replacement_cost;
-        this.rating = rating;
-        /*this.rating = switch (rating) {
-            case "PG" -> Rating.PG;
-            case "PG-13" -> Rating.PG13;
-            case "R" -> Rating.R;
-            case "NC-17" -> Rating.NC17;
-            default -> Rating.G;
-        };*/
-        this.special_features = special_features;
+    public Film(FilmDTO filmDTO){
+        this.dtoConversion(filmDTO);
+    }
+
+    // DTO conversion method.
+    public void dtoConversion(FilmDTO filmDTO){
+        this.title = filmDTO.getTitle().orElse(title);
+        this.description = filmDTO.getDescription().orElse(description);
+        this.releaseYear = filmDTO.getReleaseYear().orElse(releaseYear);
+        this.languageID = filmDTO.getLanguageID().orElse(languageID);
+        this.rentalDuration = filmDTO.getRentalDuration().orElse(rentalDuration);
+        this.rentalRate = filmDTO.getRentalRate().orElse(rentalRate);
+        this.length = filmDTO.getLength().orElse(length);
+        this.replacementCost = filmDTO.getReplacementCost().orElse(replacementCost);
+        this.rating = filmDTO.getRating().orElse(rating);
+        this.specialFeatures = filmDTO.getSpecialFeatures().orElse(specialFeatures);
     }
 
     // Getters and setters.
@@ -103,12 +106,12 @@ public class Film {
         this.description = description;
     }
 
-    public int getRelease_year() {
-        return release_year;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setRelease_year(int release_year) {
-        this.release_year = release_year;
+    public void setReleaseYear(int release_year) {
+        this.releaseYear = release_year;
     }
 
     public int getLanguageID() {
@@ -119,20 +122,20 @@ public class Film {
         this.languageID = languageID;
     }
 
-    public int getRental_duration() {
-        return rental_duration;
+    public int getRentalDuration() {
+        return rentalDuration;
     }
 
-    public void setRental_duration(int rental_duration) {
-        this.rental_duration = rental_duration;
+    public void setRentalDuration(int rentalDuration) {
+        this.rentalDuration = rentalDuration;
     }
 
-    public double getRental_rate() {
-        return rental_rate;
+    public BigDecimal getRentalRate() {
+        return rentalRate;
     }
 
-    public void setRental_rate(double rental_rate) {
-        this.rental_rate = rental_rate;
+    public void setRentalRate(BigDecimal rentalRate) {
+        this.rentalRate = rentalRate;
     }
 
     public int getLength() {
@@ -143,12 +146,12 @@ public class Film {
         this.length = length;
     }
 
-    public double getReplacement_cost() {
-        return replacement_cost;
+    public BigDecimal getReplacementCost() {
+        return replacementCost;
     }
 
-    public void setReplacement_cost(double replacement_cost) {
-        this.replacement_cost = replacement_cost;
+    public void setReplacementCost(BigDecimal replacementCost) {
+        this.replacementCost = replacementCost;
     }
 
     public String getRating() {
@@ -158,33 +161,12 @@ public class Film {
     public void setRating(String rating) {
         this.rating = rating;
     }
-/*
-    public String getRating() {
-        return switch (rating) {
-            case PG -> "PG";
-            case PG13 -> "PG-13";
-            case R -> "R";
-            case NC17 -> "NC-17";
-            default -> "G";
-        };
+
+    public String getSpecialFeatures() {
+        return specialFeatures;
     }
 
-    public void setRating(String rating) {
-        this.rating = switch (rating) {
-            case "PG" -> Rating.PG;
-            case "PG-13" -> Rating.PG13;
-            case "R" -> Rating.R;
-            case "NC-17" -> Rating.NC17;
-            default -> Rating.G;
-        };
-    }*/
-
-    public String getSpecial_features() {
-        return special_features;
+    public void setSpecialFeatures(String special_features) {
+        this.specialFeatures = special_features;
     }
-
-    public void setSpecial_features(String special_features) {
-        this.special_features = special_features;
-    }
-
 }

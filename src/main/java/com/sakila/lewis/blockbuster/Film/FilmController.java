@@ -1,8 +1,5 @@
 package com.sakila.lewis.blockbuster.Film;
 
-import com.sakila.lewis.blockbuster.Actor.Actor;
-import com.sakila.lewis.blockbuster.Film.Film;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
 @RequestMapping("/film")
 public class FilmController {
@@ -24,12 +22,9 @@ public class FilmController {
 
     // Create new film.
     @PostMapping("/AddNewFilm")
-    public @ResponseBody String addNewFilm(@RequestParam String title, @RequestParam String description, @RequestParam int release_year,
-                                           @RequestParam int language_id, @RequestParam int rental_duration, @RequestParam double rental_rate,
-                                           @RequestParam int length, @RequestParam double replacement_cost, @RequestParam String rating,
-                                           @RequestParam String special_features){
-        Film a = new Film(title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features);
-        System.out.println(title + ": " + description);
+    public @ResponseBody String addNewFilm(@RequestBody FilmDTO filmDTO){
+        Film a = new Film(filmDTO);
+        System.out.println(filmDTO.getTitle() + ": " + filmDTO.getDescription());
         filmRepository.save(a);
         return "success";
     }
@@ -65,34 +60,32 @@ public class FilmController {
         return "success";
     }
 
-    // Update film title.
-    @PatchMapping("/UpdateFilmTitleByID")
-    public @ResponseBody Film updateFilmTitleById(@RequestParam int id, @RequestParam String title) {
-        Film actor = filmRepository
-                .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No actor exists with that id."));
-        actor.setTitle(title);
-        return filmRepository.save(actor);
+    // Delete film by title.
+    @DeleteMapping("/DeleteFilmByTitle")
+    public @ResponseBody String deleteFilmByTitle(@RequestParam String title){
+        List<Film> films = filmRepository.findByTitle(title);
+        if(films.size() > 0){
+            filmRepository.deleteById(films.get(0).getId());
+        }
+        return "success";
     }
 
-    // Update film description.
-    @PatchMapping("/UpdateFilmDescriptionByID")
-    public @ResponseBody Film updateFilmDescriptionById(@RequestParam int id, @RequestParam String desc) {
-        Film actor = filmRepository
-                .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No actor exists with that id."));
-        actor.setDescription(desc);
-        return filmRepository.save(actor);
-    }
-
-    // Update film runtime.
-    @PatchMapping("/UpdateFilmRuntimeByID")
-    public @ResponseBody Film updateFilmRuntimeById(@RequestParam int id, @RequestParam int runtime) {
+    // Update film with filmDTO content.
+    @PatchMapping("/UpdateFilmByID")
+    public @ResponseBody Film updateFilmById(@RequestParam int id, @RequestBody FilmDTO filmDTO) {
         Film film = filmRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No actor exists with that id."));
-        film.setLength(runtime);
+        film.dtoConversion(filmDTO);
         return filmRepository.save(film);
+    }
+
+    // Update film found by title with filmDTO content.
+    @PatchMapping("/UpdateFilmByTitle")
+    public @ResponseBody Film updateFilmByTitle(@RequestParam String title, @RequestBody FilmDTO filmDTO) {
+        List<Film> films = filmRepository.findByTitle(title);
+        films.get(0).dtoConversion(filmDTO);
+        return filmRepository.save(films.get(0));
     }
 
 }

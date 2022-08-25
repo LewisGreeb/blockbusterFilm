@@ -5,8 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-
+@CrossOrigin(origins= {"*"}, maxAge = 4800, allowCredentials = "false" )
 @RestController
 @RequestMapping("/actor")
 public class ActorController {
@@ -34,7 +33,7 @@ public class ActorController {
 
     // Get actors by name.
     @GetMapping("/GetActorByFirstNameLastName")
-    public @ResponseBody List<Actor> getActorByFirstNameLastName(@RequestParam String first_name, @RequestParam String last_name) {
+    public @ResponseBody Actor getActorByFirstNameLastName(@RequestParam String first_name, @RequestParam String last_name) {
         return actorRepository.findByFirstNameAndLastName(first_name, last_name);
     }
 
